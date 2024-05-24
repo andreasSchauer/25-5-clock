@@ -142,7 +142,7 @@ increment30.addEventListener("click", () => {
 startButton.addEventListener("click", () => {
   clearInterval(countdown);
   isTimerActive = true;
-  countdown = setInterval(countdownLogic, 10);
+  countdown = setInterval(countdownLogic, 1000);
 })
 
 pauseButton.addEventListener("click", () => {
