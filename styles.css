@@ -29,6 +29,7 @@ body {
 #main-container {
   max-width: 600px;
   width: 100%;
+  min-width: 300px;
 }
 
 h1 {
@@ -46,16 +47,12 @@ h1 {
   gap: 1rem;
 }
 
-.time-setting {
-
-}
-
 h2 {
   font-size: 1.2rem;
   font-weight: 500;
 }
 
-.length-heading {
+.duration-heading {
   margin-bottom: 1rem;
 }
 
@@ -77,9 +74,18 @@ h2 {
   font-size: 1.2rem;
 }
 
-.length-number {
+.duration-number {
   font-size: 2.5rem;
   font-weight: 600;
+}
+
+#increment-settings-container {
+  margin-bottom: 3rem;
+  font-size: 1.2rem;
+}
+
+.incrementer {
+  margin: 0 0.2rem;
 }
 
 #countdown {
@@ -104,7 +110,11 @@ h2 {
   gap: 1rem;
 }
 
-i:hover {
+i:hover, .incrementer:hover {
   color: var(--accent-color);
   cursor: pointer;
+}
+
+.highlight {
+  color: var(--accent-color);
 }
