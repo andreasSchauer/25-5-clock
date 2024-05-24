@@ -10,6 +10,12 @@ const sessionDownButton = document.getElementById("session-down");
 const breakUpButton = document.getElementById("break-up");
 const breakDownButton = document.getElementById("break-down");
 
+const increment1 = document.getElementById("increment-1");
+const increment5 = document.getElementById("increment-5");
+const increment10 = document.getElementById("increment-10");
+const increment30 = document.getElementById("increment-30");
+const incrementers = document.getElementsByClassName("incrementer");
+
 const startButton = document.getElementById("start");
 const pauseButton = document.getElementById("pause");
 const resetButton = document.getElementById("reset");
@@ -17,34 +23,37 @@ const resetButton = document.getElementById("reset");
 const sessionDurationHTML = document.getElementById("session-duration");
 const breakDurationHTML = document.getElementById("break-duration");
 
-let sessionDuration;
-let breakDuration;
-let totalSessionSeconds;
-let totalBreakSeconds;
+let sessionDuration = 25;
+let breakDuration = 5;
+let totalSessionSeconds = sessionDuration * 60;
+let totalBreakSeconds = breakDuration * 60;
+let increment = 1
 let countdown;
 let isTimerActive = false;
 
 
-
-window.onload = () => {
-  sessionDuration = 25;
-  breakDuration = 5;
-  totalSessionSeconds = sessionDuration * 60;
-  totalBreakSeconds = breakDuration * 60;
-}
-
-const format = (num) => num >= 10 ? String(num) : "0" + num;
+const doubleDigit = (num) => num >= 10 ? String(num) : "0" + num;
 
 const calculateTime = (duration) => {
   const hours = parseInt(duration / 3600);
   const minutes = parseInt((duration - hours * 3600) / 60);
   const seconds = parseInt(duration - hours * 3600 - minutes * 60);
   
-  hoursCountdown.textContent = format(hours);
-  minutesCountdown.textContent = format(minutes);
-  secondsCountdown.textContent = format(seconds);
+  hoursCountdown.textContent = doubleDigit(hours);
+  minutesCountdown.textContent = doubleDigit(minutes);
+  secondsCountdown.textContent = doubleDigit(seconds);
 }
 
+const changeIncrement = (value) => {
+  for(let incrementer of incrementers) {
+    if(incrementer.textContent === value) {
+        incrementer.classList = "incrementer highlight";
+        increment = Number(value);
+    } else {
+        incrementer.classList = "incrementer";  
+    }
+  }
+}
 
 
 const startSessionCountdown = () => {
@@ -75,11 +84,10 @@ const countdownLogic = () => {
 }
 
 
-
 sessionUpButton.addEventListener("click", () => {
   if(!isTimerActive) {
-    sessionDuration++;
-    sessionDurationHTML.textContent = format(sessionDuration);
+    sessionDuration += increment;
+    sessionDurationHTML.textContent = doubleDigit(sessionDuration);
 
     totalSessionSeconds = sessionDuration * 60;
     calculateTime(totalSessionSeconds);
@@ -88,8 +96,8 @@ sessionUpButton.addEventListener("click", () => {
 
 sessionDownButton.addEventListener("click", () => {
   if(!isTimerActive) {
-    sessionDuration = sessionDuration > 1 ? sessionDuration - 1 : 1;
-    sessionDurationHTML.textContent = format(sessionDuration);
+    sessionDuration = sessionDuration > increment ? sessionDuration - increment : 1;
+    sessionDurationHTML.textContent = doubleDigit(sessionDuration);
 
     totalSessionSeconds = sessionDuration * 60;
     calculateTime(totalSessionSeconds);
@@ -98,8 +106,8 @@ sessionDownButton.addEventListener("click", () => {
 
 breakUpButton.addEventListener("click", () => {
   if(!isTimerActive) {
-    breakDuration++;
-    breakDurationHTML.textContent = format(breakDuration);
+    breakDuration += increment;
+    breakDurationHTML.textContent = doubleDigit(breakDuration);
 
     totalBreakSeconds = breakDuration * 60;
   } 
@@ -107,16 +115,34 @@ breakUpButton.addEventListener("click", () => {
 
 breakDownButton.addEventListener("click", () => {
   if(!isTimerActive) {
-    breakDuration = breakDuration > 1 ? breakDuration - 1 : 1;
-    breakDurationHTML.textContent = format(breakDuration);
+    breakDuration = breakDuration > increment ? breakDuration - increment : 1;
+    breakDurationHTML.textContent = doubleDigit(breakDuration);
     totalBreakSeconds = breakDuration * 60;
   }
 })
 
+
+increment1.addEventListener("click", () => {
+  changeIncrement(increment1.textContent);
+})
+
+increment5.addEventListener("click", () => {
+  changeIncrement(increment5.textContent);
+})
+
+increment10.addEventListener("click", () => {
+  changeIncrement(increment10.textContent);
+})
+
+increment30.addEventListener("click", () => {
+  changeIncrement(increment30.textContent);
+})
+
+
 startButton.addEventListener("click", () => {
   clearInterval(countdown);
   isTimerActive = true;
-  countdown = setInterval(countdownLogic, 1000);
+  countdown = setInterval(countdownLogic, 10);
 })
 
 pauseButton.addEventListener("click", () => {
@@ -126,11 +152,12 @@ pauseButton.addEventListener("click", () => {
 resetButton.addEventListener("click", () => {
   clearInterval(countdown);
   isTimerActive = false;
+  changeIncrement(increment1.textContent);
   
   sessionDuration = 25;
   breakDuration = 5;
-  sessionDurationHTML.textContent = format(sessionDuration);
-  breakDurationHTML.textContent = format(breakDuration);
+  sessionDurationHTML.textContent = doubleDigit(sessionDuration);
+  breakDurationHTML.textContent = doubleDigit(breakDuration);
   sessionHeading.textContent = "Session";
   
   totalSessionSeconds = sessionDuration * 60;
