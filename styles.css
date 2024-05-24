@@ -1,0 +1,110 @@
+:root {
+  --background: #294C60;
+  --font-color: #ABBCD6;
+  --accent-color: #FFCF75;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 18px;
+  font-family: roboto, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  padding: 0 2rem;
+  background-color: var(--background);
+  color: var(--font-color);
+}
+
+#main-container {
+  max-width: 600px;
+  width: 100%;
+}
+
+h1 {
+  margin-bottom: 3.5rem;
+  font-size: 2.3rem;
+  background: var(--accent-color);
+  color: var(--background);
+  padding: 1rem 0;
+}
+
+#time-settings-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 3rem;
+  gap: 1rem;
+}
+
+.time-setting {
+
+}
+
+h2 {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.length-heading {
+  margin-bottom: 1rem;
+}
+
+#session-heading {
+  margin-bottom: 0.3rem;
+}
+
+.timer-options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.arrows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 1.2rem;
+}
+
+.length-number {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+#countdown {
+  font-size: 3.3rem;
+  font-weight: 600;
+}
+
+#clock-container {
+  border: 4px solid var(--accent-color);
+  max-width: 300px;
+  margin: 0 auto 1.5rem auto;
+  padding: 1rem;
+  border-radius: 30px;
+}
+
+#controls-container {
+  max-width: 200px;
+  margin: 0 auto;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+i:hover {
+  color: var(--accent-color);
+  cursor: pointer;
+}
