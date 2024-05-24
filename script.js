@@ -131,6 +131,7 @@ resetButton.addEventListener("click", () => {
   breakDuration = 5;
   sessionDurationHTML.textContent = format(sessionDuration);
   breakDurationHTML.textContent = format(breakDuration);
+  sessionHeading.textContent = "Session";
   
   totalSessionSeconds = sessionDuration * 60;
   totalBreakSeconds = breakDuration * 60;
