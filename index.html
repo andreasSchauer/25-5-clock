@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <title>25 + 5 Clock</title>
+  </head>
+  <body>
+    <div id="main-container">
+      <h1>25 + 5 Clock</h1>
+      <div id="time-settings-container">
+        <div id="session-length-settings" class="time-setting">
+          <h2 class="length-heading">Session Duration</h2>
+          <div class="timer-options">
+            <div class="arrows">
+              <i id="session-up" class="fa fa-arrow-up"></i>
+              <i id="session-down" class="fa fa-arrow-down"></i>
+            </div>
+            <span id="session-duration" class="length-number">25</span>
+          </div>
+        </div>
+        <div id="break-length-settings" class="time-setting">
+          <h2 class="length-heading">Break Duration</h2>
+          <div class="timer-options">
+            <div class="arrows">
+              <i id="break-up" class="fa fa-arrow-up"></i>
+              <i id="break-down" class="fa fa-arrow-down"></i>
+            </div>
+            <span id="break-duration" class="length-number">05</span>
+          </div>
+        </div>
+      </div>
+      <div id="clock-container">
+        <h2 id="session-heading">Session</h2>
+        <p id="countdown"><span id="hours">00</span>:<span id="minutes">25</span>:<span id="seconds">00</span></p>
+      </div>
+      <div id="controls-container">
+        <i id="start" class="fa fa-play"></i>
+        <i id="pause" class="fa fa-pause"></i>
+        <i id="reset" class="fa fa-sync"></i>
+      </div>
+    </div>
+  </body>
+</html>
